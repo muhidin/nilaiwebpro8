@@ -70,6 +70,10 @@
             case 'kelas':
                 include 'kelas/index.php';
                 break;
+            
+            case 'siswa':
+                include 'siswa/index.php';
+                break;
         }
         ?>
     </div>
