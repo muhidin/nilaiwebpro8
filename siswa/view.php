@@ -4,7 +4,7 @@
             <div class="card-header row">
                 <div class="card-title h3 col-8">Data Siswa</div>
                 <div class="col-4">
-                    <a href="?m=kelas&s=add" class="btn btn-lg btn-primary float-end">Tambah</a>
+                    <a href="?m=siswa&s=add" class="btn btn-lg btn-primary float-end">Tambah</a>
                 </div>
             </div>
 
@@ -27,7 +27,7 @@
                     <tbody>
                         <?php
                         include_once('config.php');
-                        $sql = "SELECT students.id AS ids, * FROM students JOIN grades ON students.grade_id=grades.id";
+                        $sql = "SELECT students.id AS ids, students.*, grades.* FROM students JOIN grades ON students.grade_id=grades.id";
                         $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result) > 0 ) {
                             $no = 1;
@@ -44,7 +44,7 @@
                                     <td>'.$r['grade'].'</td>
                                     <td>
                                         <a href="?m=siswa&s=edit&id='.$r['ids'].'" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="?m=siswa&s=delete&id='.$r['ids'].'" class="btn btn-danger btn-sm" onclick="return confirm(\'Yakin kelas akan dihapus?, Hapus 1 kelas akan menghapus semua data siswa di kelas tersebut\')">Hapus</a>
+                                        <a href="?m=siswa&s=delete&id='.$r['ids'].'" class="btn btn-danger btn-sm" onclick="return confirm(\'Yakin siswa akan dihapus?\')">Hapus</a>
                                     </td>
                                 </tr>';
                                 $no++;

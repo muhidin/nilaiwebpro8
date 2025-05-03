@@ -2,10 +2,10 @@
 include_once('config.php');
 $id = $_GET['id'];
 
-$sql = "DELETE FROM grades WHERE id='$id'";
+$sql = "DELETE FROM students WHERE id='$id'";
 $result = mysqli_query($conn, $sql);
 if ($result) {
-    header("Location: ?m=kelas&s=view");
+    header("Location: ?m=siswa&s=view");
 } else {
-    echo "<script>alert('Data gagal dihapus'); window.location='?m=kelas&s=view';</script>";
+    echo "<script>alert('Data gagal dihapus'); window.location='?m=siswa&s=view';</script>";
 }
