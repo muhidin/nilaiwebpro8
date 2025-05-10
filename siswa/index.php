@@ -1,7 +1,7 @@
 <?php
 $submodule = (isset($_GET['s'])) ? $_GET['s'] : 'view';
 switch ($submodule){
-    case 'view': default:
+    case 'view':
         include('siswa/view.php');
         break;
 
@@ -24,4 +24,8 @@ switch ($submodule){
     case 'delete':
         include('siswa/delete.php');
         break;
+
+    default:
+        include('takada.php');
+        break;       
 }
