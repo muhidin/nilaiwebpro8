@@ -16,10 +16,8 @@
                             <th>NIS</th>
                             <th>Nama Siswa</th>
                             <th>Jenis Kelamin</th>
-                            <th>Tempat Lahir</th>
                             <th>Tanggal Lahir</th>
                             <th>Telepon</th>
-                            <th>Email</th>
                             <th>Kelas</th>
                             <th>Aksi</th>
                         </tr>
@@ -37,12 +35,11 @@
                                     <td>'.$r['nis'].'</td>
                                     <td>'.$r['name'].'</td>
                                     <td>'.$r['gender'].'</td>
-                                    <td>'.$r['pob'].'</td>
                                     <td>'. date('d F Y', strtotime($r['dob'])) .'</td>
                                     <td>'.$r['phone'].'</td>
-                                    <td>'.$r['email'].'</td>
                                     <td>'.$r['grade'].'</td>
                                     <td>
+                                        <a href="?m=siswa&s=detail&id='.$r['ids'].'" class="btn btn-info btn-sm">Lihat</a>
                                         <a href="?m=siswa&s=edit&id='.$r['ids'].'" class="btn btn-warning btn-sm">Edit</a>
                                         <a href="?m=siswa&s=delete&id='.$r['ids'].'" class="btn btn-danger btn-sm" onclick="return confirm(\'Yakin siswa akan dihapus?\')">Hapus</a>
                                     </td>

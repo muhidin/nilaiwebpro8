@@ -9,9 +9,9 @@
             </div>
 
             <div class="card-body">
-                <form action="?m=siswa&s=save" method="post">
+                <form action="?m=siswa&s=save" method="post" enctype="multipart/form-data">
                     <div class="mb-2">
-                        <input type="text" class="form-control" name="nis" placeholder="Nomor Induk Siswa" required autofocus>
+                        <input type="text" class="form-control" name="nis" maxlength="9" placeholder="Nomor Induk Siswa" required autofocus>
                     </div>
                     <div class="mb-2">
                         <input type="text" class="form-control" name="name" placeholder="Nama siswa" required>
@@ -27,10 +27,13 @@
                         <input type="date" class="form-control" name="dob" placeholder="Tanggal Lahir">
                     </div>
                     <div class="mb-2">
-                        <input type="text" class="form-control" name="phone" placeholder="Telepon">
+                        <input type="text" class="form-control" name="phone" maxlength="15" placeholder="Telepon">
                     </div>
                     <div class="mb-2">
                         <input type="text" class="form-control" name="email" placeholder="Email">
+                    </div>
+                    <div class="mb-2">
+                        <textarea name="address" class="form-control" placeholder="Alamat"></textarea>
                     </div>
                     <div class="mb-2">
                         <select name="grade_id" class="form-control" required>
@@ -45,6 +48,11 @@
                             ?>
                         </select>
                     </div>
+                    <div class="mb-2">
+                        <label for="">Upload Foto Anda</label>
+                        <input type="file" class="form-control" name="photo" accept="image/*">
+                    </div>
+
                     <div class="mb-2">
                         <input type="reset" class="btn btn-warning">
                         <input type="submit" value="Simpan" class="btn btn-primary" name="save">

@@ -8,9 +8,31 @@ if (isset($_POST['save'])) {
     $dob = $_POST['dob'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
-    $grade_id = $_POST['grade_id'];
+    $address = $_POST['address'];
 
-    $sql = "INSERT INTO students SET nis='$nis', name='$name', gender='$gender', pob='$pob', dob='$dob', phone='$phone', email='$email', grade_id='$grade_id'";
+    $grade_id = $_POST['grade_id'];
+    $random = rand();
+    $filename = $_FILES['photo']['name'];
+    $filename2 = pathinfo($_FILES['photo']['name'], PATHINFO_FILENAME);
+    $size = $_FILES['photo']['size'];
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+    $extallowed = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp', 'ico', 'svg', 'tiff'];
+
+    if (!file_exists(($_FILES['photo']['tmp_name'])) || !is_uploaded_file($_FILES['photo']['tmp_name'])) {
+        $sql = "INSERT INTO students SET nis='$nis', name='$name', gender='$gender', pob='$pob', dob='$dob', phone='$phone', email='$email', address='$address', grade_id='$grade_id'";
+    } else {
+        if (in_array($ext, $extallowed)) {
+            if ($size > 10000000) {
+                echo "<script>alert('Ukuran file tidak boleh lebih dari 10 MB'); window.location='?m=siswa&s=add';</script>";
+            } else {
+                $photo = $filename2 . "_" . $random . '.' . $ext;
+                move_uploaded_file($_FILES['photo']['tmp_name'], 'images/students/'.$photo);
+                $sql = "INSERT INTO students SET nis='$nis', name='$name', gender='$gender', pob='$pob', dob='$dob', phone='$phone', email='$email', address='$address', photo='$photo', grade_id='$grade_id'";
+            }
+        } else {
+            echo "<script>alert('Akhiran file tidak sesuai'); window.location='?m=siswa&s=add';</script>";
+        }
+    }
     $result = mysqli_query($conn, $sql);
     if ($result) {
         header("Location: ?m=siswa&s=view");

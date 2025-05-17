@@ -5,6 +5,10 @@ switch ($submodule){
         include('siswa/view.php');
         break;
 
+    case 'detail':
+        include('siswa/detail.php');
+        break;
+
     case 'add':
         include('siswa/add.php');
         break;
