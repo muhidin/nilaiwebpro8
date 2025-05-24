@@ -25,7 +25,7 @@
                     <tbody>
                         <?php
                         include_once('config.php');
-                        $sql = "SELECT students.id AS ids, nis, name, gender, pob, dob, phone, email, grade FROM students JOIN grades ON students.grade_id=grades.id";
+                        $sql = "SELECT students.id AS ids, nis, name, gender, pob, dob, phone, email, grade FROM students JOIN grades ON students.grade_id=grades.id ORDER BY ids ASC";
                         $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result) > 0 ) {
                             $no = 1;

@@ -1,3 +1,8 @@
+<style>
+    label {
+        font-weight: bold;
+    }
+</style>
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -16,11 +21,13 @@
             $r = mysqli_fetch_assoc($result);
             ?>
             <div class="card-body">
-                <form action="?m=siswa&s=update" method="post">
+                <form action="?m=siswa&s=update" method="post" enctype="multipart/form-data">
                     <div class="mb-2">
+                        <label for="">Nomor Induk Siswa</label>
                         <input type="text" class="form-control" name="nis" value="<?= $r['nis'] ?>" placeholder="Nomor Induk Siswa" required autofocus>
                     </div>
                     <div class="mb-2">
+                        <label for="">Nama Siswa</label>
                         <input type="text" class="form-control" name="name" value="<?= $r['name'] ?>" placeholder="Nama Siswa" required>
                     </div>
                     <div class="mb-2">
@@ -29,18 +36,27 @@
                         <input type="radio" name="gender" value="Perempuan" <?= $r['gender'] == 'Perempuan' ? 'checked' : '' ?>> Perempuan
                     </div>
                     <div class="mb-2">
+                        <label for="">Tempat Lahir</label>
                         <input type="text" class="form-control" name="pob" value="<?= $r['pob'] ?>" placeholder="Tempat Lahir (isi dengan nama Kabupaten/Kota)">
                     </div>
                     <div class="mb-2">
+                        <label for="">Tanggal Lahir</label>
                         <input type="date" class="form-control" name="dob" value="<?= $r['dob'] ?>" placeholder="Tanggal Lahir">
                     </div>
                     <div class="mb-2">
+                        <label for="">Telepon</label>
                         <input type="text" class="form-control" name="phone" value="<?= $r['phone'] ?>" placeholder="Telepon">
                     </div>
                     <div class="mb-2">
+                        <label for="">Email</label>
                         <input type="text" class="form-control" name="email" value="<?= $r['email'] ?>" placeholder="Email">
                     </div>
                     <div class="mb-2">
+                        <label for="">Alamat</label>
+                        <textarea name="address" class="form-control" value="<?= $r['address'] ?>" placeholder="Alamat"></textarea>
+                    </div>
+                    <div class="mb-2">
+                        <label for="">Kelas</label>
                         <select name="grade_id" class="form-control" required>
                             <option value="">Pilih Kelas</option>
                             <?php
@@ -53,10 +69,24 @@
                             ?>
                         </select>
                     </div>
-                    <div class="mb-2">
+                     <div class="mb-2">
+                        <label for="">Foto</label><br>
+                        <?php
+                        if (isset($r['photo']) && $r['photo'] != '') { ?>
+                            <img src="images/students/<?= $r['photo'] ?>" class="img-fluid" alt="<?= $r['name'] ?>" width="400px" title="<?= $r['name'] ?>">
+                            <input type="hidden"  name="photoOk" value="<?= $r['photo'] ?>">
+                        <?php } else { ?>
+                             Tidak ada Foto
+                        <?php } ?>
+                    </div>
+                     <div class="mb-4">
+                        <label for="">Ganti Foto</label>
+                        <input type="file" class="form-control" name="photo" accept="image/*">
+                    </div>
+                    <div class="mb-4">
                         <input type="hidden" name="id" value="<?= $r['id'] ?>">
-                        <input type="reset" class="btn btn-warning">
                         <input type="submit" value="Update" class="btn btn-primary" name="update">
+                        <input type="reset" class="btn btn-warning" style="float: right">
                     </div>
                 </form>
             </div>

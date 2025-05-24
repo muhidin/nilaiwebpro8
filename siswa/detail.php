@@ -67,9 +67,10 @@
                     <div class="mb-2">
                         <?php
                         if (isset($r['photo']) && $r['photo'] != '') { ?>
-                            <img src="images/students/<?= $r['photo'] ?>" class="img-fluid" alt="<?= $r['name'] ?>" width="400px">
+                            <img src="images/students/<?= $r['photo'] ?>" class="img-fluid" alt="<?= $r['name'] ?>" width="400px" title="<?= $r['name'] ?>">
                         <?php } else { ?>
-                            <img src="images/webpro.png" class="img-fluid" alt="Logo WebPro">
+                            <!-- <img src="images/webpro.png" class="img-fluid" alt="Logo WebPro" title="Tidak ada Foto"> -->
+                             Tidak ada Foto
                         <?php } ?>
                     </div>
                 </form>

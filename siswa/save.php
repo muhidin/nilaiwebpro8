@@ -8,7 +8,7 @@ if (isset($_POST['save'])) {
     $dob = $_POST['dob'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
-    $address = $_POST['address'];
+    $address = preg_replace("/[^a-zA-Z0-9 .,\/]/", "", $_POST['address']);
 
     $grade_id = $_POST['grade_id'];
     $random = rand();
@@ -33,6 +33,8 @@ if (isset($_POST['save'])) {
             echo "<script>alert('Akhiran file tidak sesuai'); window.location='?m=siswa&s=add';</script>";
         }
     }
+    // var_dump($sql);
+    // exit();
     $result = mysqli_query($conn, $sql);
     if ($result) {
         header("Location: ?m=siswa&s=view");
